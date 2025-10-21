@@ -1,0 +1,97 @@
+Travail 1 :
+Contraintes sur les entités
+•	Circuit
+-	ID_circuit est la clé primaire (unique et non nulle).
+-	ville_depart et ville_arrivee doivent exister dans l’entité Ville.
+-	Intitule, date, heure_depart, heure_arrivee, transport sont obligatoires.
+-	Une ville ne peut être à la fois départ et arrivée pour un même circuit à une même date (RG8).
+-	Chaque circuit doit avoir au moins deux villes (RG6).
+•	Client
+-	ID_client est la clé primaire.
+-	prenom, nom, naissance, adresse sont obligatoires.
+-	Le couple (prenom, nom, naissance) doit être unique pour éviter les doublons.
+-	Un client peut avoir plusieurs réservations, mais une réservation doit toujours référencer un client existant (intégrité référentielle).
+•	Accompagnateur
+-	id_accompagnateur est la clé primaire.
+-	nom, prenom, adresse sont obligatoires.
+-	Un accompagnateur peut accompagner plusieurs circuits, mais un circuit n’a qu’un seul accompagnateur(RG4).
+
+
+•	Ville
+-	nom_ville est la clé primaire.
+-	nom_ville est unique (RG3).
+-	Chaque ville est liée à un seul hôtel (RG2).
+•	Participants_circuits
+-	Clé primaire composite : (id_circuit, id_client).
+-	id_accompagnateur est clé étrangère -> Accompagnateur.
+-	id_circuit est clé étrangère ->Circuit.
+-	id_client est clé étrangère -> Client.
+-	prix_individuel, nombre_place, acompte, deuxieme_versement, total doivent être positifs.
+-	Une réservation ne devient définitive qu’après versement du second paiement (RG12).
+-	Après la date limite D1, les réservations non soldées sont annulées (RG13).
+
+Travail 2 :
+
+Entité Circuit :
+ID_circuit -> intitule, date, heure_depart, heure_arrivee, ville_depart, ville_arrivee, transport
+
+
+Entité Client :
+ID_client -> prenom, nom, naissance, adresse, CA
+
+
+Entité Accompagnateur :
+id_accompagnateur -> nom, prenom, adresse
+
+
+Entité Ville :
+nom_ville ->hotel, pays
+
+Entité Participant-circuit :
+id_circuit, id_client -> id_accompagnateur, prix_individuel, nombre_place, acompte, deuxieme_versement, remise, total
+
+
+
+
+
+
+
+Travail 3 :
+
+Circuit :
+ID_circuit ->intitule
+ID_circuit -> date
+ID_circuit ->heure_depart
+ID_circuit ->heure_arrivee
+ID_circuit -> ville_depart
+ID_circuit -> ville_arrivee
+ID_circuit -> transport
+
+
+Client :
+ID_client ->prenom
+ID_client -> nom
+ID_client -> naissance
+ID_client -> adresse
+ID_client -> CA
+
+
+Accompagnateur :
+id_accompagnateur -> nom
+id_accompagnateur -> prenom
+id_accompagnateur -> adresse
+
+
+Ville :
+nom_ville -> hotel
+nom_ville -> pays
+
+
+Participants_circuits :
+id_circuit, id_client -> id_accompagnateur
+id_circuit, id_client -> prix_individuel
+id_circuit, id_client -> nombre_place
+id_circuit, id_client -> acompte
+id_circuit, id_client -> deuxieme_versement
+id_circuit, id_client -> remise
+id_circuit, id_client -> total
